@@ -1,0 +1,30 @@
+{
+  "name": "checkrob",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "bin": "./dist/index.js",
+  "exports": "./dist/index.js",
+  "scripts": {
+    "dev": "ts-node index.ts",
+    "build": "tsup index.ts --dts"
+  },
+  "keywords": [],
+  "author": "jcvalino",
+  "license": "MIT",
+  "dependencies": {
+    "prompt-sync": "^4.2.0",
+    "puppeteer": "^19.7.2",
+    "tsup": "^8.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.2",
+    "@types/prompt-sync": "^4.2.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  },
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts"
+}
