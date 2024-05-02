@@ -75,27 +75,5 @@ const rl = prompt();
     await page.reload();
   }
 
-  //   await page.waitForFunction('document.querySelector("")');
-
   console.log('Ctrl + C to terminate the script');
-  //   await browser.close();
-
-  // Type into search box
-  //   await page.type(".search-box__input", "automate beyond recorder");
-
-  //   // Wait and click on first result
-  //   const searchResultSelector = ".search-box__link";
-  //   await page.waitForSelector(searchResultSelector);
-  //   await page.click(searchResultSelector);
-
-  //   // Locate the full title with a unique string
-  //   const textSelector = await page.waitForSelector(
-  //     "text/Customize and automate"
-  //   );
-  //   const fullTitle = await textSelector?.evaluate((el) => el.textContent);
-
-  //   // Print the full title
-  //   console.log('The title of this blog post is "%s".', fullTitle);
-
-  //   await browser.close();
 })();
