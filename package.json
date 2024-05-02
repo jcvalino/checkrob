@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "bin": "./dist/cjs/index.js",
-  "exports": "./dist/index.js",
+  "exports": "./dist/cjs/index.js",
   "scripts": {
     "dev": "tsx index.ts",
     "build": "tsup index.ts --dts",
@@ -37,6 +37,6 @@
   "files": [
     "dist"
   ],
-  "type": "module",
+  "type": "commonjs",
   "types": "dist/index.d.ts"
 }

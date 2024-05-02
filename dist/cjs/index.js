@@ -33597,10 +33597,6 @@ var ExplorerBase$1 = {};
 
 var loaders$1 = {};
 
-function commonjsRequire(path) {
-	throw new Error('Could not dynamically require "' + path + '". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.');
-}
-
 var resolveFrom = {exports: {}};
 
 var hasRequiredResolveFrom;
@@ -33760,7 +33756,7 @@ function requireImportFresh () {
 
 		const parent = require.cache[parentPath]; // If `filePath` and `parentPath` are the same, cache will already be deleted so we won't get a memory leak in next step
 
-		return parent === undefined ? commonjsRequire(filePath) : parent.require(filePath); // In case cache doesn't have parent, fall back to normal require
+		return parent === undefined ? require(filePath) : parent.require(filePath); // In case cache doesn't have parent, fall back to normal require
 	};
 	return importFresh$1;
 }

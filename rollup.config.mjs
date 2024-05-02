@@ -26,17 +26,19 @@ export default [
     plugins: [
       resolve(),
       json(),
-      commonjs(),
+      commonjs({
+        ignoreDynamicRequires: true,
+      }),
       typescript({ tsconfig: './tsconfig.json' }),
     ],
   },
-  // {
-  //   input: 'dist/esm/types/index.d.ts',
-  //   output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-  //   plugins: [
-  //     dts({
-  //       respectExternal: true,
-  //     }),
-  //   ],
-  // },
+  {
+    input: 'dist/esm/types/index.d.ts',
+    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+    plugins: [
+      dts({
+        respectExternal: true,
+      }),
+    ],
+  },
 ];
