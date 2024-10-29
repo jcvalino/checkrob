@@ -20,13 +20,14 @@ jobs:
         with:
           node-version: "20.x"
           registry-url: "https://registry.npmjs.org"
-      - run: echo "TOKEN= $NODE_AUTH_TOKEN"
+      - run: echo "TOKEN= $TEST_VAR"
       - run: npm ci
       - run: npm version patch
       - run: npm run rollup
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          TEST_VAR: "TEST_VARIABLE"
 
       - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
         with:
