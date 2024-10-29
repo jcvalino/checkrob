@@ -15,7 +15,10 @@ jobs:
 
     steps:
       - name: copy main branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@master
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0  
 
       - name: setup node
         uses: actions/setup-node@v4
@@ -45,9 +48,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: commit changes
-        uses: EndBug/add-and-commit@v9
+        uses: actions-js/push@master
         with:
-          author_name: Multisys Bot
-          committer_name: Multisys Bot
-          message: ":rocket: publish to npm"
-          new_branch: "workflow_generated_branch"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
