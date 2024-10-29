@@ -25,13 +25,18 @@ jobs:
 
       - name: configure git creds
         run: |
+          echo "set user.email"
           git config --global user.email "jcvalino@multisyscorp.com"
+          echo "set user.name"
           git config --global user.name "jcvalino"
 
       - name: build project
         run: |
+          echo "installing dependency"
           npm ci
+          echo "updating the version in package.json"
           npm version patch
+          echo "roll up!"
           npm run rollup
 
       - name: publish to npm
