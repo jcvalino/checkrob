@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [14, 16, 18]
+        node: [16, 18, 20]
     permissions:
       contents: read
       id-token: write
@@ -23,17 +23,14 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           registry-url: "https://registry.npmjs.org"
-      - run: echo "TOKEN= $TEST_VAR"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           TEST_VAR: ${{ github.repository }}
+      - run: echo "TOKEN= $TEST_VAR"
       - run: npm ci
       - run: npm version patch
       - run: npm run rollup
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          TEST_VAR: ${{ github.repository }}
+      - run: npm publish
 
       - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
         with:
