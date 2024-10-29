@@ -39,6 +39,8 @@ jobs:
           npm ci
           echo "updating the version in package.json"
           npm version patch
+          echo "check changes"
+          git status
           echo "roll up!"
           npm run rollup
 
