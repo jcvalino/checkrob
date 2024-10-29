@@ -1,6 +1,9 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+on:
+  push:
+    tags:
+      - v*
 
 jobs:
   Explore-GitHub-Actions:
@@ -17,3 +20,9 @@ jobs:
       - run: npm version patch
       - run: npm run rollup
       - run: npm publish
+
+      - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
+        with:
+        author_name: Multisys Bot
+        committer_name: Multisys Bot
+        message: ":rocket: publish to npm"
