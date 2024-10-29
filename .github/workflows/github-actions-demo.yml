@@ -8,10 +8,6 @@ on:
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
-    environment: NPM
 
     steps:
       - name: copy main branch
