@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@master
         with:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-          fetch-depth: 0  
+          fetch-depth: 0
 
       - name: setup node
         uses: actions/setup-node@v4
@@ -43,7 +43,9 @@ jobs:
           npm run rollup
 
       - name: publish to npm
-        run: npm publish
+        run: |
+          npm publish
+          git status
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
