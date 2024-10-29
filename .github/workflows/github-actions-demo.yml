@@ -8,13 +8,18 @@ on:
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     environment: NPM
 
     steps:
-      - uses: actions/checkout@master
+      - name: copy main branch
+        uses: actions/checkout@master
         with:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
           fetch-depth: 0
+          branch: "main"
 
       - name: setup node
         uses: actions/setup-node@v4
@@ -51,3 +56,4 @@ jobs:
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: "main"
