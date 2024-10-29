@@ -8,6 +8,7 @@ on:
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+    environment: NPM
 
     steps:
       - name: copy main branch
