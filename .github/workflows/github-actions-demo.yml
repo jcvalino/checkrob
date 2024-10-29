@@ -17,12 +17,14 @@ jobs:
       - name: copy main branch
         uses: actions/checkout@v4
 
-      - name: configure git creds
-        run: git config --global user.email "jcvalino@multisyscorp.com" && git config --global user.name "jcvalino"
+      - name: setup node
         uses: actions/setup-node@v4
         with:
           node-version: "20.x"
           registry-url: "https://registry.npmjs.org"
+
+      - name: configure git creds
+        run: git config --global user.email "jcvalino@multisyscorp.com" && git config --global user.name "jcvalino"
 
       - name: build project
         run: npm ci && npm version patch && npm run rollup
