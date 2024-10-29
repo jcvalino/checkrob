@@ -14,18 +14,24 @@ jobs:
     environment: NPM
 
     steps:
-      - uses: actions/checkout@v4
-      - run: git config --global user.email "jcvalino@multisyscorp.com"
-      - run: git config --global user.name "jcvalino"
-      - uses: actions/setup-node@v4
+      - name: copy main branch
+        uses: actions/checkout@v4
+
+      - name: configure git creds
+        run: git config --global user.email "jcvalino@multisyscorp.com"
+        run: git config --global user.name "jcvalino"
+        uses: actions/setup-node@v4
         with:
           node-version: "20.x"
           registry-url: "https://registry.npmjs.org"
-      - run: echo 'Hi ${{ env.TEST_VAR }}'
-      - run: npm ci
-      - run: npm version patch
-      - run: npm run rollup
-      - run: npm publish
+
+      - name: build project
+        run: npm ci
+        run: npm version patch
+        run: npm run rollup
+
+      - name: publish to npm
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
