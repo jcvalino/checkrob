@@ -16,6 +16,8 @@ jobs:
         with:
           node-version: "20.x"
       - run: node -v
+      - run: git config --global user.email "jcvalino@multisyscorp.com"
+      - run: git config --global user.name "jcvalino"
       - run: npm install
       - run: npm version patch
       - run: npm run rollup
