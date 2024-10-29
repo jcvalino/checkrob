@@ -24,10 +24,15 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: configure git creds
-        run: git config --global user.email "jcvalino@multisyscorp.com" && git config --global user.name "jcvalino"
+        run: |
+          git config --global user.email "jcvalino@multisyscorp.com"
+          git config --global user.name "jcvalino"
 
       - name: build project
-        run: npm ci && npm version patch && npm run rollup
+        run: |
+          npm ci
+          npm version patch
+          npm run rollup
 
       - name: publish to npm
         run: npm publish
