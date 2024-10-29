@@ -21,6 +21,9 @@ jobs:
           node-version: "20.x"
           registry-url: "https://registry.npmjs.org"
       - run: echo "TOKEN= $TEST_VAR"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          TEST_VAR: ${{ github.repository }}
       - run: npm ci
       - run: npm version patch
       - run: npm run rollup
