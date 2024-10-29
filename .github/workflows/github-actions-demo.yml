@@ -8,9 +8,6 @@ on:
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [16, 18, 20]
     permissions:
       contents: read
       id-token: write
@@ -21,16 +18,15 @@ jobs:
       - run: git config --global user.name "jcvalino"
       - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          node-version: "20.x"
           registry-url: "https://registry.npmjs.org"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          TEST_VAR: ${{ github.repository }}
-      - run: echo "TOKEN= $TEST_VAR"
+      - run: echo 'Hi ${{ env.TEST_VAR }}'
       - run: npm ci
       - run: npm version patch
       - run: npm run rollup
       - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
         with:
