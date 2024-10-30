@@ -15,11 +15,7 @@ jobs:
 
     steps:
       - name: copy main branch
-        uses: actions/checkout@master
-        with:
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-          fetch-depth: 0
-          branch: "main"
+        uses: actions/checkout@v3
 
       - name: setup node
         uses: actions/setup-node@v4
@@ -52,8 +48,8 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: commit changes
-        uses: actions-js/push@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: "main"
+      - name: push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push origin HEAD
