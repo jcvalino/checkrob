@@ -1,6 +1,6 @@
 {
   "name": "checkrob",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "",
   "bin": "./dist/cjs/index.js",
   "exports": "./dist/cjs/index.js",
